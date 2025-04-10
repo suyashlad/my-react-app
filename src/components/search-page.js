@@ -2,6 +2,11 @@ import React, { useState,useEffect  } from "react";
 import './search-page.css';
 import { useLocation } from "react-router-dom";
 import { getUserName, whatnew } from "../api";
+{/*
+ import './search.css';
+
+  */ }
+
 
 export default function FrontPage() {
   const [darkMode, setDarkMode] = useState(false);
@@ -30,20 +35,36 @@ const [visibleIndices, setVisibleIndices] = useState([0, 1, 2]);
   }, [userId]);
   
   return (
-    <div className={`  d-flex flex-column align-items-center   al
+    <div className={`  d-flex flex-column align-items-center   al search-wrapper
        ${darkMode ? " text-light" : " text-dark"}  `} style={darkMode ? { backgroundColor: "#454545" } : {backgroundColor : "#FFFFFF"}} >
       <div id="rect-3"></div>
       <div id="rect-2"></div>
       <div id="cir"></div>
+    <div>
+    <button
+  id="drk"
+  className={`btn fixed-bottom theme-toggle ${darkMode ? 'dark' : 'light'}`}
+  onClick={() => setDarkMode(!darkMode)}
+>
+  <div className={`toggle-content ${darkMode ? 'move-right' : 'move-left'}`}>
+    <img
+      src={darkMode ? "dark.png" : "light.png"}
+      alt="theme-icon"
+      className="theme-icon"
+    />
+    
+  </div>
+  <span className="toggle-label">{darkMode ? "Dark" : "Light"}</span>
+</button></div> 
       {/* Navbar */}
       
       <nav className="nav flex  w-full  flex-row container-fluid fixed-top" >
        
     
-        <button id="bt-sm-lg" className={`btn  mb-0 R-0    float-right img-fluid`}><img id="sm-lg"src={darkMode ? "logo_small_dark.png":"/logo_small.png"} alt="Recently viewed" className="w-4 h-4" /></button>
-          <button id="lt" className={`btn  mb-0 R-0 align-items-right  img-fluid nav-btn mr-1`}><img  src={darkMode ? "/Recently_Viewed_dark.png" : "/Recently Viewed.png"} alt="Recently viewed" className="w-4 h-4 y1" /><span className={`mx-2 ${darkMode ? " text-light" : " text-dark"}`}>Recently Viewed</span> </button>
-          <button className={`btn  mb-0 R-0 align-items-right  img-fluid nav-btn mx-5`}><img src={darkMode ? "/Favorites_dark.png" : "/Favorites.png"} alt="Favorites" className="w-1 h-1 y1" /><span className={`mx-2 ${darkMode ? " text-light" : " text-dark"}`}>Favorites</span> </button>
-          <button className={`btn mb-0 R-0 align-items-right img-fluid nav-btn ml-1`}>
+        <button id="bt-sm-lg" className={`btn  mb-0 R-0    float-right img-fluid b1`}><img id="sm-lg"src={darkMode ? "logo_small_dark.png":"/logo_small.png"} alt="Recently viewed" className="w-4 h-4" /></button>
+          <button id="lt" className={`btn  mb-0 R-0 align-items-right  img-fluid nav-btn mr-1 b1`}><img  src={darkMode ? "/Recently_Viewed_dark.png" : "/Recently Viewed.png"} alt="Recently viewed" className="w-4 h-4 y1" /><span className={`mx-2 ${darkMode ? " text-light" : " text-dark"}`}>Recently Viewed</span> </button>
+          <button className={`btn  mb-0 R-0 align-items-right  img-fluid nav-btn mx-5 b1`}><img src={darkMode ? "/Favorites_dark.png" : "/Favorites.png"} alt="Favorites" className="w-1 h-1 y1" /><span className={`mx-2 ${darkMode ? " text-light" : " text-dark"}`}>Favorites</span> </button>
+          <button className={`btn mb-0 R-0 align-items-right img-fluid nav-btn ml-1 b1`}>
   <img src={darkMode ? "/log_in_dark.png" : "/Log In.png"} alt="Profile" className="w-1 h-1 y1" /><span className={`mx-2 ${darkMode ? " text-light" : " text-dark"}`}>{name}</span> 
   
 </button>
@@ -59,7 +80,7 @@ const [visibleIndices, setVisibleIndices] = useState([0, 1, 2]);
         {/* Search Bar */}
         <div id="lo-nm-div"className=" flex items-center bg-orange-100 mx-auto rounded-lg w-full max-w-xl shadow-md mt-4">
        {/*  <img id="se" src={darkMode ? "/se_dark.png":"/se.png"} alt="ClarityPull Logo" className=" mx-6" />
-        */ }
+        */ }</div>
        <div className="se-div">
   <div className="se-input-wrapper">
     <img
@@ -78,8 +99,8 @@ const [visibleIndices, setVisibleIndices] = useState([0, 1, 2]);
 </div>
 
 
-          </div>
-        
+          
+          </div>  
         {/* Cards */}
      <div id="new">
   {/* What's New Button */}
@@ -153,22 +174,25 @@ const [visibleIndices, setVisibleIndices] = useState([0, 1, 2]);
             &times;
           </button>
         </div>
-        <div className="card-header">
-          <div className="author-info">
-            <img
+        <span ><img
               src={darkMode ? `/g${cardIndex + 1}_dark.png` : `/g${cardIndex + 1}.png`}
               alt={`Article ${cardIndex + 1}`}
               className="author-image"
-            />
+              id="auth-img"
+            /></span>
+        <span className="crd-txt"><div className={`card-header ${darkMode ? "crd-hdr-drk":"crd-hdr-light"}`}>
+          <div className="author-info">
+            
             <div className="author-meta">
               <h4 className="article-title">{article.title}</h4>
             </div>
           </div>
         </div>
         <p className="article-description">{article.description}</p>
-        <p className="article-date" id="wn-auther-info">
+        <p className="article-date" id={`wn-auther-info ${darkMode ? "wn-auth-drk" : "wn-auth-light"}`}>
           {article.date} • {article.author}
-        </p>
+        </p></span>
+        
       </div>
     );
   })}
@@ -180,24 +204,10 @@ const [visibleIndices, setVisibleIndices] = useState([0, 1, 2]);
 
 </div>
 
-      </div>  
+      
 
       <footer>
-      <button
-  id="drk"
-  className={`btn fixed-bottom theme-toggle ${darkMode ? 'dark' : 'light'}`}
-  onClick={() => setDarkMode(!darkMode)}
->
-  <div className={`toggle-content ${darkMode ? 'move-right' : 'move-left'}`}>
-    <img
-      src={darkMode ? "dark.png" : "light.png"}
-      alt="theme-icon"
-      className="theme-icon"
-    />
-    
-  </div>
-  <span className="toggle-label">{darkMode ? "Dark" : "Light"}</span>
-</button>
+      
 
 </footer>
 

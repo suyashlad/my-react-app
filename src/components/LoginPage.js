@@ -23,7 +23,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="login-container">
+    <div className="login-container page">
       <div id="rect"></div>
       <div id="cir"></div>
 
