@@ -1,0 +1,93 @@
+/* Sidebar */
+.sidebar {
+    height: 100vh;
+    background-color: #1e1e2f;
+    color: #0a0a0a;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: width 0.3s ease; /* Smooth transition for expanding and collapsing */
+    overflow: hidden;
+    border-right: 1px solid #2a2a40;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Collapsed state */
+  .sidebar.collapsed {
+    width: 70px; /* Narrow width when collapsed */
+  }
+  
+  /* Expanded state */
+  .sidebar.expanded {
+    width: 220px; /* Wider width when expanded */
+    align-items: flex-start;
+    padding: 20px;
+  }
+  
+  /* Logo */
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 30px;
+    color: #110f0f;
+    text-align: center;
+    width: 100%;
+    transition: font-size 0.3s ease; /* Optional: Smooth font change */
+  }
+  
+  /* Navigation button */
+  .nav-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: transparent;
+    border: none;
+    color: #111213;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    width: 100%;
+    border-radius: 0;
+    justify-content: flex-start;
+  }
+  
+  /* For collapsed sidebar, buttons are centered */
+  .sidebar.collapsed .nav-button {
+    justify-content: center;
+    padding: 12px;
+  }
+  
+  /* On hover */
+  .nav-button:hover {
+    background-color: #2d2d44;
+    color: #000000;
+  }
+  
+  /* Label for buttons */
+  .nav-button span {
+    font-weight: 500;
+    transition: opacity 0.3s ease; /* Optional: Smooth transition for labels */
+    opacity: 1;
+  }
+  
+  .sidebar.collapsed .nav-button span {
+    opacity: 0; /* Hide text when collapsed */
+  }
+  
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .sidebar.expanded {
+      width: 180px; /* Adjust width on smaller screens */
+    }
+  
+    .nav-button {
+      font-size: 0.95rem;
+    }
+  }
+  

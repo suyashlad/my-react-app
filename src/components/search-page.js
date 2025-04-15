@@ -1,6 +1,6 @@
 import React, { useState,useEffect  } from "react";
 import './search-page.css';
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate  } from "react-router-dom";
 import { getUserName, whatnew } from "../api";
 {/*
  import './search.css';
@@ -13,7 +13,10 @@ export default function FrontPage() {
   const location = useLocation();
   const userId = location.state?.userId;
   const [name, setName] = useState("User");
-  
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const navigate = useNavigate();
+  const fav=true;
+  const rec_view=true;
 const [articles, setArticles] = useState([]);
 const [startIndex, setStartIndex] = useState(0);
 const [visibleIndices, setVisibleIndices] = useState([0, 1, 2]);
@@ -62,15 +65,46 @@ const [visibleIndices, setVisibleIndices] = useState([0, 1, 2]);
        
     
         <button id="bt-sm-lg" className={`btn  mb-0 R-0    float-right img-fluid b1`}><img id="sm-lg"src={darkMode ? "logo_small_dark.png":"/logo_small.png"} alt="Recently viewed" className="w-4 h-4" /></button>
-          <button id="lt" className={`btn  mb-0 R-0 align-items-right  img-fluid nav-btn mr-1 b1`}><img  src={darkMode ? "/Recently_Viewed_dark.png" : "/Recently Viewed.png"} alt="Recently viewed" className="w-4 h-4 y1" /><span className={`mx-2 ${darkMode ? " text-light" : " text-dark"}`}>Recently Viewed</span> </button>
-          <button className={`btn  mb-0 R-0 align-items-right  img-fluid nav-btn mx-5 b1`}><img src={darkMode ? "/Favorites_dark.png" : "/Favorites.png"} alt="Favorites" className="w-1 h-1 y1" /><span className={`mx-2 ${darkMode ? " text-light" : " text-dark"}`}>Favorites</span> </button>
-          <button className={`btn mb-0 R-0 align-items-right img-fluid nav-btn ml-1 b1`}>
-  <img src={darkMode ? "/log_in_dark.png" : "/Log In.png"} alt="Profile" className="w-1 h-1 y1" /><span className={`mx-2 ${darkMode ? " text-light" : " text-dark"}`}>{name}</span> 
-  
-</button>
+       
+            <div className="nav-btn-div">
+              <button
+                id="lt"
+                className="btn nav-btn btn-nav flex w-full flex-row"
+                onClick={() =>
+                  navigate("/search-results", {
+                    state: { userId, darkMode, rec_view },
+                  })
+                }
+              >
+               <span>
+               <img src={darkMode ? "/Recently_Viewed_dark.png" : "/Recently Viewed.png"} alt="Recently_viewed" />
+               </span> <span className={`mx-2 ${darkMode ? "text-light" : "text-dark"}`}>Recently_viewed</span>
+              </button>
 
-      </nav>
+              <button
+                className="btn nav-btn btn-nav"
+                onClick={() =>
+                  navigate("/search-results", {
+                    state: { userId, darkMode,fav },
+                  })
+                }
+              >
+                <img src={darkMode ? "/Favorites_dark.png" : "/Favorites.png"} alt="favorites" />
+                <span className={`mx-2 ${darkMode ? "text-light" : "text-dark"}`}>favorites</span>
+              </button>
 
+              <button className="btn nav-btn btn-nav"
+              onClick={() =>
+                navigate("/Dashboard", {
+                  state: { userId, darkMode },
+                })
+              }>
+                <img src={darkMode ? "/log_in_dark.png" : "/Log In.png"} alt="Profile" />
+                <span className={`mx-2 ${darkMode ? "text-light" : "text-dark"}`}>{name}</span>
+              </button>
+            </div>
+          </nav>
+    
       {/* Main Content */}
       <div className="flex flex-col items-center text-center t-100% w-full max-w-4xl pt-3 pb-3 mb-3" id="in">
      <img src={darkMode ? "/logo_big_dark.png":"/logo_big.png"} alt="ClarityPull Logo" id="lo_lg" />
@@ -83,19 +117,31 @@ const [visibleIndices, setVisibleIndices] = useState([0, 1, 2]);
         */ }</div>
        <div className="se-div">
   <div className="se-input-wrapper">
-    <img
-      src={darkMode ? "/se-drk.png " : "/se-light.png"}
-      alt="search icon"
-      className="se-icon"
-    />
+   
     <input
       type="search"
       id="se-input"
       placeholder="Article name or keywords..."
+  value={searchKeyword}
+  onChange={(e) => setSearchKeyword(e.target.value)}
       className={`${darkMode ? "se-in-drk" : "se-in-light"}`}
+      
     />
   </div>
-  <button className="se-btn-drk">Search</button>
+  <button
+  className="se-btn-drk"
+  onClick={() => {
+    navigate("/search-results", {
+      state: {
+        userId,
+        darkMode,
+        keyword: searchKeyword.trim(),
+      },
+    });
+  }}
+>
+  Search
+</button>
 </div>
 
 

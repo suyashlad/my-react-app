@@ -1,0 +1,19 @@
+
+#lo_nm-div
+{
+  margin-top: 100%;
+}
+#lt1{
+    margin-left: -10%;
+}
+.nav-btn
+{
+    width: fit-content;
+    height: fit-content;
+    margin-bottom: 20px;
+    /* height: 10px; */
+    /* margin-bottom: 0px; */
+    padding: 0%;
+    border-radius: 100%;
+    border: none;
+}

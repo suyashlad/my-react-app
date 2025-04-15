@@ -1,11 +1,10 @@
 #logo-bt{
     margin-top: 100%;
-    margin-left: 100%;
     padding: 0%;
 }
 .nav{
-    margin-top: 0.5%;
-    width: auto;
+    margin-top: 2%;
+    width: 50%;
     height: auto;
     
 }
@@ -16,14 +15,13 @@
 
 #bt-sm-lg{
     margin-left: 2.1%;
-    width: 0.0000000000000000000000000000000000000000000000000000000000000px;
-    height: 0.00000000000000000000000000000000000000000000px;
    
     margin-top: 2.4%;
     /* height: 10px; */
     /* margin-bottom: 0px; */
     padding: 0%;
     border-radius: 100%;
+    margin-left: -40%;
 }
 #lo_lg{
     height:50%;
@@ -39,21 +37,22 @@
 }
 #lo_nm-div
 {
-    margin-bottom: 20%;
+  margin-top: 100%;
 }
 #lt{
-    margin-left: 64%;
+    margin-left: -10%;
 }
 .nav-btn
 {
     width: fit-content;
     height: fit-content;
-    margin-top: 1%;
+    margin-top: 3%;
     margin-bottom: 20px;
     /* height: 10px; */
     /* margin-bottom: 0px; */
     padding: 0%;
     border-radius: 100%;
+    border: none;
 }
 .y{
     width: 70%;
@@ -63,13 +62,11 @@
 }
 .al{
     width: 100%;
-    height: -10%;
     padding-top: 2%;
     margin-top: 0%;
     padding-bottom: -100%;
     overflow: hidden;
-    border: #ff4343;
-   
+   padding-left: 0%;
 }
 
 
@@ -103,14 +100,13 @@
 }
 
 .se-icon {
-  position: absolute;
-  left: 6.7%;
+  position:sticky;
+  margin-left: 6.7%;
   top: 50%;
-  transform: translateY(-50%);
-  height: 40%;
-  width: 2%;
+  height: 60%;
+  width: 6%;
   pointer-events: none;
-  margin-left: -1%;
+  z-index: 99;
 }
 
 #se-input {
@@ -120,19 +116,25 @@
   border-radius: 5px;
   box-sizing: border-box;
   height: 110%;
+  
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
 }
 
 .se-in-drk {
   background: #454545;
   border: 1px solid #ffffff;
   color: white;
+  background-image: url('F:/yogiraj data and ai labs/react/claritypull/public/se-drk.png');
+
 }
 
 .se-in-light {
-  background: #fff2e9;
+  background: #fff2e9;  
   border: none;
   color: #333;
-}
+  background-image: url('F:/yogiraj data and ai labs/react/claritypull/public/se-light.png');
+  }
 
 .se-btn-drk {
   background: #ff8f43;
@@ -142,7 +144,7 @@
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
-  height: 100%;
+  height: 90%;
   white-space: nowrap;
   margin-left: -5%;
 }
